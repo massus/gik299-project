@@ -332,6 +332,12 @@ public class GUI extends javax.swing.JFrame {
         } else {
             for (var i : iceCreamArray) {
                 txtArea.append(iceCreamArray.getPrintAble());
+    private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionPerformed
+        if (iceCreamArray.size == 0) {
+            txtArea.setText("Lagret är tomt");
+        } else {
+            for (var i : iceCreamArray) {
+                txtArea.append(i.getPrintAble());
             }
         }
     }//GEN-LAST:event_btnShowAllActionPerformed
