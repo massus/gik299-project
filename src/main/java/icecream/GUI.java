@@ -78,6 +78,11 @@ public class GUI extends javax.swing.JFrame {
         labelOutput.setText("Output:");
 
         btnShowAll.setLabel("Show all");
+        btnShowAll.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnShowAllActionPerformed(evt);
+            }
+        });
 
         btnAdd.setText("Add");
 
@@ -277,6 +282,16 @@ public class GUI extends javax.swing.JFrame {
     private void tfProductBrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProductBrandActionPerformed
 
     }//GEN-LAST:event_tfProductBrandActionPerformed
+
+    private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionPerformed
+        if (iceCreamArray.size == 0) {
+            txtArea.setText("Lagret är tomt") 
+        } else {
+            for (var i : iceCreamArray) {
+                txtArea.append(iceCreamArray.getPrintAble());
+            }
+        }
+    }//GEN-LAST:event_btnShowAllActionPerformed
 
     /**
      * @param args the command line arguments
