@@ -357,7 +357,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(labelTotal))
                             .addComponent(btnScrollRight))))
-                .addGap(97, 97, 97))
+                .addGap(10, 10, 10))
         );
 
         btnShowAll.getAccessibleContext().setAccessibleName("btnShowAll");
