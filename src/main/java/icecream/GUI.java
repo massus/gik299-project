@@ -24,9 +24,9 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
-        ddProductType.removeAllItems();
-        ddProductType.addItem("popsicle");
-        ddProductType.addItem("cone");
+        ddIceCreamType.removeAllItems();
+        ddIceCreamType.addItem("popsicle");
+        ddIceCreamType.addItem("cone");
 
         iceCreamArray = new ArrayList();
         iceCreamArray.add(new IceCream("0", "popsicle", "GB Glass", 19, 5, "cola", true, false));
@@ -59,22 +59,22 @@ public class GUI extends javax.swing.JFrame {
         btnChange = new javax.swing.JButton();
         labelTotalPrice = new javax.swing.JLabel();
         btnSort = new javax.swing.JButton();
-        tfProductID = new javax.swing.JTextField();
+        tfIceCreamID = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        tfProductBrand = new javax.swing.JTextField();
+        tfIceCreamBrand = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        tfProductPrice = new javax.swing.JTextField();
+        tfIceCreamPrice = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        tfProductStock = new javax.swing.JTextField();
+        tfIceCreamStock = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        tfProductFlavour = new javax.swing.JTextField();
+        tfIceCreamFlavour = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         cbVegan = new javax.swing.JCheckBox();
         cbAllergens = new javax.swing.JCheckBox();
-        ddProductType = new javax.swing.JComboBox<>();
+        ddIceCreamType = new javax.swing.JComboBox<>();
         btnSale = new javax.swing.JButton();
         btnRemove = new javax.swing.JButton();
         btnSearchPrice = new javax.swing.JButton();
@@ -82,7 +82,6 @@ public class GUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("MainFrame"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(775, 515));
         setResizable(false);
         setSize(new java.awt.Dimension(800, 500));
 
@@ -159,9 +158,9 @@ public class GUI extends javax.swing.JFrame {
 
         jLabel2.setText("Type:");
 
-        tfProductBrand.addActionListener(new java.awt.event.ActionListener() {
+        tfIceCreamBrand.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfProductBrandActionPerformed(evt);
+                tfIceCreamBrandActionPerformed(evt);
             }
         });
 
@@ -181,7 +180,7 @@ public class GUI extends javax.swing.JFrame {
 
         cbAllergens.setText("Other than dairy?");
 
-        ddProductType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        ddIceCreamType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnSale.setText("SALE");
         btnSale.addActionListener(new java.awt.event.ActionListener() {
@@ -241,14 +240,14 @@ public class GUI extends javax.swing.JFrame {
                                         .addComponent(jLabel3))
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(tfProductBrand, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tfProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tfProductStock, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tfIceCreamBrand, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tfIceCreamPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tfIceCreamStock, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(cbAllergens)
                                         .addComponent(cbVegan)
-                                        .addComponent(tfProductFlavour, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(ddProductType, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(tfProductID, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(tfIceCreamFlavour, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(ddIceCreamType, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tfIceCreamID, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnAdd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnRemove, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
@@ -292,33 +291,33 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(tfProductID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfIceCreamID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(jLabel2)
-                                    .addComponent(ddProductType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(ddIceCreamType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(btnChange, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfProductBrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tfIceCreamBrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
                         .addGap(7, 7, 7)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(tfProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfIceCreamPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4)
                                     .addComponent(btnSearchPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(tfProductStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfIceCreamStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel5))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(tfProductFlavour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tfIceCreamFlavour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -365,44 +364,44 @@ public class GUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfProductBrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfProductBrandActionPerformed
+    private void tfIceCreamBrandActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfIceCreamBrandActionPerformed
 
-    }//GEN-LAST:event_tfProductBrandActionPerformed
+    }//GEN-LAST:event_tfIceCreamBrandActionPerformed
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        boolean IDexists = false;
-        if (!(tfProductID.getText().equals("")
-                || tfProductBrand.getText().equals("")
-                || tfProductPrice.getText().equals("")
-                || tfProductStock.getText().equals("")
-                || tfProductFlavour.getText().equals(""))) {
+        boolean iceCreamIDExists = false;
+        if (!(tfIceCreamID.getText().equals("")
+                || tfIceCreamBrand.getText().equals("")
+                || tfIceCreamPrice.getText().equals("")
+                || tfIceCreamStock.getText().equals("")
+                || tfIceCreamFlavour.getText().equals(""))) {
 
             for (IceCream iceCream : iceCreamArray) {
-                if (iceCream.getId().equals(tfProductID.getText())) {
-                    IDexists = true;
+                if (iceCream.getId().equals(tfIceCreamID.getText())) {
+                    iceCreamIDExists = true;
                 }
             }
-            if (IDexists) {
-                txtArea.setText("Product-ID: " + tfProductID.getText() + " already exists.");
+            if (iceCreamIDExists) {
+                txtArea.setText("Product-ID: " + tfIceCreamID.getText() + " already exists.");
             } else {
                 try {
                     iceCreamArray.add(new IceCream(
-                            tfProductID.getText(),
-                            ddProductType.getSelectedItem().toString(),
-                            tfProductBrand.getText(),
-                            Double.parseDouble(tfProductPrice.getText()),
-                            Integer.parseInt(tfProductStock.getText()),
-                            tfProductFlavour.getText(),
+                            tfIceCreamID.getText(),
+                            ddIceCreamType.getSelectedItem().toString(),
+                            tfIceCreamBrand.getText(),
+                            Double.parseDouble(tfIceCreamPrice.getText()),
+                            Integer.parseInt(tfIceCreamStock.getText()),
+                            tfIceCreamFlavour.getText(),
                             cbVegan.isSelected(),
                             cbAllergens.isSelected()));
                     txtArea.setText("Product added!");
-                    tfProductID.setText("");
-                    ddProductType.setSelectedIndex(0);
-                    tfProductBrand.setText("");
-                    tfProductPrice.setText("");
-                    tfProductStock.setText("");
-                    tfProductFlavour.setText("");
+                    tfIceCreamID.setText("");
+                    ddIceCreamType.setSelectedIndex(0);
+                    tfIceCreamBrand.setText("");
+                    tfIceCreamPrice.setText("");
+                    tfIceCreamStock.setText("");
+                    tfIceCreamFlavour.setText("");
                     cbVegan.setSelected(false);
                     cbAllergens.setSelected(false);
                 } catch (NumberFormatException e) {
@@ -428,15 +427,19 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnShowAllActionPerformed
 
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        boolean iceCreamRemoved = false;
+
         for (var i : iceCreamArray) {
-            if (i.getId().equals(tfProductID.getText())) {
+            if (i.getId().equals(tfIceCreamID.getText())) {
                 txtArea.setText("Product-ID " + i.getId() + " has been removed.");
-                tfProductID.setText("");
+                tfIceCreamID.setText("");
                 iceCreamArray.remove(i);
+                iceCreamRemoved = true;
                 break;
-            } else {
-                txtArea.setText("The product with ID: " + tfProductID.getText() + " was not found.");
             }
+        }
+        if (!iceCreamRemoved) {
+            txtArea.setText("The product with ID: " + tfIceCreamID.getText() + " was not found.");
         }
         updateLabels();
     }//GEN-LAST:event_btnRemoveActionPerformed
@@ -460,34 +463,47 @@ public class GUI extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         int searchHits = 0;
+        boolean iceCreamFound = false;
 
         txtArea.setText("");
-        for (var i : iceCreamArray) {
-            if (i.getType().equals(ddProductType.getSelectedItem().toString()) && i.getBrand().equals(tfProductBrand.getText())) {
-                txtArea.append(i.getPrintable());
+        // Letar igenom arrayen efter en glass där både glasstyp och glassmärke 
+        // samma som är skriva i fälten i GUI:t och säger att glass hittades,
+        // skriver ut alla träffar och räknar antalet träffar.
+        for (IceCream iceCream : iceCreamArray) {
+            if (iceCream.getType().equals(ddIceCreamType.getSelectedItem().toString()) && iceCream.getBrand().equals(tfIceCreamBrand.getText())) {
+                txtArea.append(iceCream.getPrintable());
+                iceCreamFound = true;
                 searchHits++;
-            } else {
-                txtArea.setText("Could not find items with given parameters.");
             }
         }
-        txtArea.append("Search hits: " + searchHits);
+        // Hittades ingen glass skriver vi det.
+        if (!iceCreamFound) {
+            txtArea.setText("Could not find items with given parameters.");
+        // Hittades en glass skriver vi ut hur många som hittades.
+        } else {
+            txtArea.append("Search hits: " + searchHits);
+        }
     }//GEN-LAST:event_btnSearchActionPerformed
 
     private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
-        boolean found = false;
-        for (var i : iceCreamArray) {
-            if (i.getId().equals(tfProductID.getText())) {
-                i.setPrice(Double.parseDouble(tfProductPrice.getText()));
-                i.setStock(Integer.parseInt(tfProductStock.getText()));
+        boolean iceCreamFound = false;
+        
+        // Letar igenom arrayen efter ett ID som passar och ändrar datan för det
+        // ID:t med objektets setters.
+        for (IceCream iceCream : iceCreamArray) {
+            if (iceCream.getId().equals(tfIceCreamID.getText())) {
+                iceCream.setPrice(Double.parseDouble(tfIceCreamPrice.getText()));
+                iceCream.setStock(Integer.parseInt(tfIceCreamStock.getText()));
 
                 txtArea.setText("");
-                txtArea.append("You changed product with ID: " + i.getId() + "\n\n");
-                txtArea.append(i.getPrintable());
-                found = true;
+                txtArea.append("You changed product with ID: " + iceCream.getId() + "\n\n");
+                txtArea.append(iceCream.getPrintable());
+                iceCreamFound = true;
             }
         }
 
-        if (!found) {
+        // Printar att produkt inte hittades
+        if (!iceCreamFound) {
             txtArea.setText("ID not found");
         }
         updateLabels();
@@ -495,76 +511,113 @@ public class GUI extends javax.swing.JFrame {
 
     private void btnSearchPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchPriceActionPerformed
         // TODO add your handling code here:
+        
+        // Letar igenom alla objekts .getPrice() efter ett pris som är lägre 
+        // än i pris-fältet i GUI:t och om det är lägre skriver vi ut det.
         boolean itemsFound = false;
         txtArea.setText("");
         for (IceCream iceCream : iceCreamArray) {
-            if (iceCream.getPrice() < Double.parseDouble(tfProductPrice.getText())) {
+            if (iceCream.getPrice() < Double.parseDouble(tfIceCreamPrice.getText())) {
                 txtArea.append(iceCream.getPrintable());
                 itemsFound = true;
             }
         }
+        // Hittade vi ingen glass med lägre pris skriver vi ut det.
         if (!itemsFound) {
-            txtArea.setText("No items found with a price lower than " + tfProductPrice.getText() + "kr.");
+            txtArea.setText("No items found with a price lower than " + tfIceCreamPrice.getText() + "kr.");
         }
     }//GEN-LAST:event_btnSearchPriceActionPerformed
 
     private void btnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortActionPerformed
+        
+        // Sorterar arrayen med hjälp av en komparator som jämför märkena 
+        // alfabetiskt.
         if (iceCreamArray.isEmpty()) {
-            txtArea.setText("No icecream in stock...");
+            txtArea.setText("No ice cream in stock...");
         } else {
             Collections.sort(iceCreamArray, new Comparator<IceCream>() {
-            @Override
-            public int compare(IceCream a, IceCream b) {
-                return a.getBrand().compareToIgnoreCase(b.getBrand());
-            }
-        });
-            txtArea.setText("Sorted by brand");
+                @Override
+                public int compare(IceCream a, IceCream b) {
+                    return a.getBrand().compareToIgnoreCase(b.getBrand());
+                }
+            });
+            txtArea.setText("Sorted by brand.");
         }
     }//GEN-LAST:event_btnSortActionPerformed
 
     private void btnSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaleActionPerformed
         // TODO add your handling code here:
+        
+        // Variabler för att hantera sökningen
         Random randomiser = new Random();
+        // Slumpad index
         int randomNumber = randomiser.nextInt(iceCreamArray.size());
+        // Håller koll på om vi hittade en glass.
         boolean itemFound = false;
-        ArrayList<String> itemsSearched = new ArrayList();
+        // Håller koll på gamla priset.
+        double oldPrice = 0;
+        // Håller koll på ID:s på alla glassar vi redan försökt gjort en sale på.
+        ArrayList<String> iceCreamsSearched = new ArrayList();
 
-        while (itemFound == false && itemsSearched.size() < iceCreamArray.size()) {
+        
+        // Loopar så länge itemFound = false och antalet sökta glassar är lägre
+        // än antalet glassar i vår huvudsakliga array.
+        while (itemFound == false && iceCreamsSearched.size() < iceCreamArray.size()) {
+            // Kollar om vår slumpade glass har ett lagerantal över 0
             if (iceCreamArray.get(randomNumber).getStock() > 0) {
+                // Säger att vi hittat en glass med lagerantal över 0.
                 itemFound = true;
+                
+                oldPrice = iceCreamArray.get(randomNumber).getPrice();
+                // Hämtar glassen ifråga och sätter en nytt pris vilket är
+                // dess gamla pris multiplicerat med 0,65.
                 iceCreamArray.get(randomNumber).setPrice(iceCreamArray.get(randomNumber).getPrice() * 0.65);
+                // Uppdaterar totala priset via vår metod.
                 updateLabels();
+                // Skriver ut alla glassar igen
                 btnShowAll.doClick();
+                // Skriver en rad längst ner som informerar.
                 txtArea.append(String.format("Product-ID: " + iceCreamArray.get(randomNumber).getId() + " has had it's price reduced by 45%%!\n"
-                        + "It now costs: %.2f kr!", iceCreamArray.get(randomNumber).getPrice()));
+                        + "Was %.2f kr, it now costs: %.2f kr!", oldPrice, iceCreamArray.get(randomNumber).getPrice()));
             } else {
-                if (itemsSearched.contains(iceCreamArray.get(randomNumber).getId()) == false) {
-                    itemsSearched.add(iceCreamArray.get(randomNumber).getId());
+                // Hittade vi ingen glass med ett lager>0 på detta slumpade tal
+                // kollar vi om vår sökning redan finns lagrad.
+                // Finns den inte lägger vi till sökningen i vår lista över 
+                // sökningar.
+                if (iceCreamsSearched.contains(iceCreamArray.get(randomNumber).getId()) == false) {
+                    iceCreamsSearched.add(iceCreamArray.get(randomNumber).getId());
                 }
+                // Slumpar fram ett nytt tal.
                 randomNumber = randomiser.nextInt(iceCreamArray.size());
             }
         }
-        if (itemsSearched.size() == iceCreamArray.size()) {
+        // Om vi slumpade fram allting med inget fanns i lager skriver vi det.
+        if (iceCreamsSearched.size() == iceCreamArray.size()) {
             txtArea.setText("No items in stock to put on sale.");
         }
 
     }//GEN-LAST:event_btnSaleActionPerformed
 
+    
+    // Metod för att updatera labels.
     private void updateLabels() {
         int popsicles = 0;
         int cones = 0;
         double totalPrice = 0;
 
+        // Loopar igenom och får lagerantalet på alla typer vi hade(popsicle 
+        // eller cone).
         for (IceCream iceCream : iceCreamArray) {
             if (iceCream.getType().equals("popsicle")) {
                 popsicles += iceCream.getStock();
             } else {
                 cones += iceCream.getStock();
             }
-
+            // Sparar in priset för varje glass.
             totalPrice += iceCream.getPrice() * iceCream.getStock();
         }
 
+        // Uppdaterar alla labels.
         labelPopsicles.setText("Popsicles: " + popsicles);
         labelCones.setText("Cones: " + cones);
         labelTotalPrice.setText(String.format("Total price: %.2f kr", totalPrice));
@@ -619,7 +672,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btnSort;
     private javax.swing.JCheckBox cbAllergens;
     private javax.swing.JCheckBox cbVegan;
-    private javax.swing.JComboBox<String> ddProductType;
+    private javax.swing.JComboBox<String> ddIceCreamType;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -635,11 +688,11 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel labelPopsicles;
     private javax.swing.JLabel labelTotal;
     private javax.swing.JLabel labelTotalPrice;
-    private javax.swing.JTextField tfProductBrand;
-    private javax.swing.JTextField tfProductFlavour;
-    private javax.swing.JTextField tfProductID;
-    private javax.swing.JTextField tfProductPrice;
-    private javax.swing.JTextField tfProductStock;
+    private javax.swing.JTextField tfIceCreamBrand;
+    private javax.swing.JTextField tfIceCreamFlavour;
+    private javax.swing.JTextField tfIceCreamID;
+    private javax.swing.JTextField tfIceCreamPrice;
+    private javax.swing.JTextField tfIceCreamStock;
     private javax.swing.JTextArea txtArea;
     // End of variables declaration//GEN-END:variables
 }
