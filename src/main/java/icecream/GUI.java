@@ -6,6 +6,9 @@
 package icecream;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  *
@@ -146,6 +149,11 @@ public class GUI extends javax.swing.JFrame {
         labelTotalPrice.setText("Price:");
 
         btnSort.setText("Sort");
+        btnSort.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSortActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("ID:");
 
@@ -249,8 +257,8 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(btnSearchPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, 0)
                                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(76, 76, 76)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(76, 76, 76)))
+                        .addGap(11, 11, 11)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelOutput)
                     .addGroup(layout.createSequentialGroup()
@@ -494,6 +502,20 @@ public class GUI extends javax.swing.JFrame {
             txtArea.setText("No items found with a price lower than " + tfProductPrice.getText() + "kr.");
         }
     }//GEN-LAST:event_btnSearchPriceActionPerformed
+
+    private void btnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortActionPerformed
+        if (iceCreamArray.isEmpty()) {
+            txtArea.setText("No icecream in stock...");
+        } else {
+            Collections.sort(iceCreamArray, new Comparator<IceCream>() {
+            @Override
+            public int compare(IceCream a, IceCream b) {
+                return a.getBrand().compareToIgnoreCase(b.getBrand());
+            }
+        });
+            txtArea.setText("Sorted by brand");
+        }
+    }//GEN-LAST:event_btnSortActionPerformed
 
     private void updateLabels () {
         int popsicles = 0;
