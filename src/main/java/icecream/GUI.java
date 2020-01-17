@@ -123,6 +123,11 @@ public class GUI extends javax.swing.JFrame {
         btnSearch.setMaximumSize(new java.awt.Dimension(63, 23));
         btnSearch.setMinimumSize(new java.awt.Dimension(62, 23));
         btnSearch.setPreferredSize(new java.awt.Dimension(62, 23));
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         btnChange.setText("Change");
 
@@ -379,6 +384,30 @@ public class GUI extends javax.swing.JFrame {
         }
         txtArea.setText("Index: " + scrollIndex + "\n\n" + iceCreamArray.get(scrollIndex).getPrintable());
     }//GEN-LAST:event_btnScrollRightActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        int searchHits = 0;
+        
+        txtArea.setText("");
+        for (var i : iceCreamArray) {
+            if (i.getType().equals(ddProductType.getSelectedItem().toString()) && i.getBrand().equals(tfProductBrand.getText())) {
+                String output = String.format("Id: %s.\n"
+                + "Type: %s\n"
+                + "Brand: %s\n"
+                + "Price: %.2f\n"
+                + "Stock: %d\n"
+                + "Flavour: %s\n"
+                + "Vegan: %b\n"
+                + "Allergens: %b\n"
+                + "----------------------------------------------------------\n", 
+                i.getId(), i.getType(), i.getBrand(), i.getPrice(), i.getStock(), i.getFlavour(), i.getVegan(), i.getAllergenBesidesDairy());
+                
+                txtArea.append(output);
+                searchHits++;
+            }
+        }
+        txtArea.append("Search hits: " + searchHits);
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     /**
      * @param args the command line arguments
