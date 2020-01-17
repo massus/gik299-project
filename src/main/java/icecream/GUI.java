@@ -150,6 +150,11 @@ public class GUI extends javax.swing.JFrame {
         btnSale.setText("SALE");
 
         btnRemove.setText("Remove");
+        btnRemove.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoveActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -336,6 +341,15 @@ public class GUI extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_btnShowAllActionPerformed
+
+    private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
+        for (var i : iceCreamArray) {
+            if (i.getId().equals(tfProductID.getText())) {
+                txtArea.setText("Produkt-id " + i.getId() + " har tagits bort");
+                iceCreamArray.remove(i);
+            }
+        }
+    }//GEN-LAST:event_btnRemoveActionPerformed
 
     /**
      * @param args the command line arguments
