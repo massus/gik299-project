@@ -125,11 +125,13 @@
                   <Group type="102" attributes="0">
                       <Component id="jScrollPane1" min="-2" pref="403" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="labelPopsicles" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnScrollRight" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="btnScrollLeft" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelTotalPrice" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="btnScrollRight" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnScrollLeft" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="labelTotalPrice" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                       <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   </Group>
