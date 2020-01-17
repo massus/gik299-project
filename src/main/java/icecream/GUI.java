@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class GUI extends javax.swing.JFrame {
 
     ArrayList<IceCream> iceCreamArray;
+    int scrollIndex = 0;
 
     /**
      * Creates new form GUI
@@ -99,8 +100,18 @@ public class GUI extends javax.swing.JFrame {
         });
 
         btnScrollLeft.setText("<");
+        btnScrollLeft.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnScrollLeftActionPerformed(evt);
+            }
+        });
 
         btnScrollRight.setText(">");
+        btnScrollRight.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnScrollRightActionPerformed(evt);
+            }
+        });
 
         labelPopsicles.setText("Popsicles: ");
 
@@ -328,14 +339,33 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionPerformed
-        if (iceCreamArray.size() == 0) {
+        if (iceCreamArray.isEmpty()) {
             txtArea.setText("Lagret är tomt");
         } else {
+            txtArea.setText("");
             for (var i : iceCreamArray) {
                 txtArea.append(i.getPrintable());
             }
         }
     }//GEN-LAST:event_btnShowAllActionPerformed
+
+    private void btnScrollLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScrollLeftActionPerformed
+        // TODO add your handling code here:
+        scrollIndex--;
+        if (scrollIndex == - 1) {
+            scrollIndex = iceCreamArray.size() - 1;
+        }
+        txtArea.setText("Index: " + scrollIndex + "\n\n" + iceCreamArray.get(scrollIndex).getPrintable());
+    }//GEN-LAST:event_btnScrollLeftActionPerformed
+
+    private void btnScrollRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScrollRightActionPerformed
+        // TODO add your handling code here:
+        scrollIndex++;
+        if (scrollIndex == iceCreamArray.size()) {
+            scrollIndex = 0;
+        }
+        txtArea.setText("Index: " + scrollIndex + "\n\n" + iceCreamArray.get(scrollIndex).getPrintable());
+    }//GEN-LAST:event_btnScrollRightActionPerformed
 
     /**
      * @param args the command line arguments

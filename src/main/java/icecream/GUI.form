@@ -245,6 +245,9 @@
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="btnScrollLeft"/>
       </AccessibilityProperties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnScrollLeftActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnScrollRight">
       <Properties>
@@ -253,6 +256,9 @@
       <AccessibilityProperties>
         <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="btnScrollRight"/>
       </AccessibilityProperties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnScrollRightActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="labelPopsicles">
       <Properties>
