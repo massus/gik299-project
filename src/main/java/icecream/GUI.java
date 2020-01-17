@@ -326,18 +326,13 @@ public class GUI extends javax.swing.JFrame {
             txtArea.setText("Missing information to be able to add in to the list.");
         }
     }//GEN-LAST:event_btnAddActionPerformed
+
     private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionPerformed
-        if (iceCreamArray.size == 0) {
+        if (iceCreamArray.size() == 0) {
             txtArea.setText("Lagret är tomt");
         } else {
             for (var i : iceCreamArray) {
-                txtArea.append(iceCreamArray.getPrintAble());
-    private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionPerformed
-        if (iceCreamArray.size == 0) {
-            txtArea.setText("Lagret är tomt");
-        } else {
-            for (var i : iceCreamArray) {
-                txtArea.append(i.getPrintAble());
+                txtArea.append(i.getPrintable());
             }
         }
     }//GEN-LAST:event_btnShowAllActionPerformed
