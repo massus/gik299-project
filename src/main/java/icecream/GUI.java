@@ -30,6 +30,7 @@ public class GUI extends javax.swing.JFrame {
         iceCreamArray.add(new IceCream("1", "popsicle", "GB Glass", 19, 7, "jordgubbe", true, false));
         iceCreamArray.add(new IceCream("2", "cone", "GB Glass", 25, 3, "choklad", true, true));
         
+        updateLabels();
     }
 
     /**
