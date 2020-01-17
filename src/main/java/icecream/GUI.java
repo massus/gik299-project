@@ -79,8 +79,10 @@ public class GUI extends javax.swing.JFrame {
         setResizable(false);
         setSize(new java.awt.Dimension(800, 500));
 
+        txtArea.setEditable(false);
         txtArea.setColumns(20);
         txtArea.setRows(5);
+        txtArea.setFocusable(false);
         jScrollPane1.setViewportView(txtArea);
 
         labelOutput.setText("Output:");
@@ -93,6 +95,7 @@ public class GUI extends javax.swing.JFrame {
         });
 
         btnAdd.setText("Add");
+        btnAdd.setPreferredSize(new java.awt.Dimension(75, 23));
         btnAdd.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddActionPerformed(evt);
@@ -161,6 +164,7 @@ public class GUI extends javax.swing.JFrame {
         btnSale.setText("SALE");
 
         btnRemove.setText("Remove");
+        btnRemove.setPreferredSize(new java.awt.Dimension(75, 23));
         btnRemove.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRemoveActionPerformed(evt);
@@ -201,8 +205,9 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(tfProductFlavour, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(ddProductType, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(tfProductID, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btnRemove))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnAdd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnRemove, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btnSale, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -272,9 +277,9 @@ public class GUI extends javax.swing.JFrame {
                             .addComponent(jLabel8)
                             .addComponent(cbAllergens))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAdd)
+                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRemove))
+                        .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -319,6 +324,7 @@ public class GUI extends javax.swing.JFrame {
                 || tfProductPrice.getText().equals("")
                 || tfProductStock.getText().equals("")
                 || tfProductFlavour.getText().equals(""))) {
+
             for (IceCream iceCream : iceCreamArray) {
                 if (iceCream.getId().equals(tfProductID.getText())) {
                     IDexists = true;
@@ -327,16 +333,29 @@ public class GUI extends javax.swing.JFrame {
             if (IDexists) {
                 txtArea.setText("Product-ID: " + tfProductID.getText() + " already exists.");
             } else {
-                iceCreamArray.add(new IceCream(
-                        tfProductID.getText(),
-                        ddProductType.getSelectedItem().toString(),
-                        tfProductBrand.getText(),
-                        Double.parseDouble(tfProductPrice.getText()),
-                        Integer.parseInt(tfProductStock.getText()),
-                        tfProductFlavour.getText(),
-                        cbVegan.isSelected(),
-                        cbAllergens.isSelected()));
-                txtArea.setText("Product added!");
+                try {
+                    iceCreamArray.add(new IceCream(
+                            tfProductID.getText(),
+                            ddProductType.getSelectedItem().toString(),
+                            tfProductBrand.getText(),
+                            Double.parseDouble(tfProductPrice.getText()),
+                            Integer.parseInt(tfProductStock.getText()),
+                            tfProductFlavour.getText(),
+                            cbVegan.isSelected(),
+                            cbAllergens.isSelected()));
+                    txtArea.setText("Product added!");
+                    tfProductID.setText("");
+                    ddProductType.setSelectedIndex(0);
+                    tfProductBrand.setText("");
+                    tfProductPrice.setText("");
+                    tfProductStock.setText("");
+                    tfProductFlavour.setText("");
+                    cbVegan.setSelected(false);
+                    cbAllergens.setSelected(false);
+                } catch (NumberFormatException e) {
+                    txtArea.setText("Could not add, check information.");
+                }
+
             }
         } else {
             txtArea.setText("Missing information to be able to add in to the list.");
@@ -345,7 +364,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionPerformed
         if (iceCreamArray.isEmpty()) {
-            txtArea.setText("Lagret är tomt");
+            txtArea.setText("Nothing in stock.");
         } else {
             txtArea.setText("");
             for (var i : iceCreamArray) {
@@ -357,8 +376,11 @@ public class GUI extends javax.swing.JFrame {
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
         for (var i : iceCreamArray) {
             if (i.getId().equals(tfProductID.getText())) {
-                txtArea.setText("Produkt-id " + i.getId() + " har tagits bort");
+                txtArea.setText("Product-ID " + i.getId() + " has been removed.");
+                tfProductID.setText("");
                 iceCreamArray.remove(i);
+            } else {
+                txtArea.setText("The product with ID: " + tfProductID.getText() + " was not found.");
             }
         }
     }//GEN-LAST:event_btnRemoveActionPerformed
