@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Random;
+import java.util.stream.Stream;
 
 /**
  *
@@ -32,7 +34,7 @@ public class GUI extends javax.swing.JFrame {
         iceCreamArray.add(new IceCream("0", "popsicle", "GB Glass", 19, 5, "cola", true, false));
         iceCreamArray.add(new IceCream("1", "popsicle", "GB Glass", 19, 7, "jordgubbe", true, false));
         iceCreamArray.add(new IceCream("2", "cone", "GB Glass", 25, 3, "choklad", true, true));
-        
+
         updateLabels();
     }
 
@@ -184,6 +186,11 @@ public class GUI extends javax.swing.JFrame {
         ddProductType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         btnSale.setText("SALE");
+        btnSale.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSaleActionPerformed(evt);
+            }
+        });
 
         btnRemove.setText("Remove");
         btnRemove.setPreferredSize(new java.awt.Dimension(75, 23));
@@ -267,11 +274,11 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(labelPopsicles)
                             .addComponent(labelCones, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(82, 82, 82)
+                        .addGap(62, 62, 62)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(labelTotalPrice)
                             .addComponent(labelTotal))
-                        .addGap(80, 80, 80)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnScrollRight))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(32, Short.MAX_VALUE))
@@ -455,7 +462,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
         int searchHits = 0;
-        
+
         txtArea.setText("");
         for (var i : iceCreamArray) {
             if (i.getType().equals(ddProductType.getSelectedItem().toString()) && i.getBrand().equals(tfProductBrand.getText())) {
@@ -474,14 +481,14 @@ public class GUI extends javax.swing.JFrame {
             if (i.getId().equals(tfProductID.getText())) {
                 i.setPrice(Double.parseDouble(tfProductPrice.getText()));
                 i.setStock(Integer.parseInt(tfProductStock.getText()));
-                
+
                 txtArea.setText("");
                 txtArea.append("You changed product with ID: " + i.getId() + "\n\n");
                 txtArea.append(i.getPrintable());
                 found = true;
             }
         }
-        
+
         if (!found) {
             txtArea.setText("ID not found");
         }
@@ -517,28 +524,55 @@ public class GUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnSortActionPerformed
 
-    private void updateLabels () {
+    private void btnSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaleActionPerformed
+        // TODO add your handling code here:
+        Random randomiser = new Random();
+        int randomNumber = randomiser.nextInt(iceCreamArray.size());
+        boolean itemFound = false;
+        ArrayList<String> itemsSearched = new ArrayList();
+
+        while (itemFound == false && itemsSearched.size() < iceCreamArray.size()) {
+            if (iceCreamArray.get(randomNumber).getStock() > 0) {
+                itemFound = true;
+                iceCreamArray.get(randomNumber).setPrice(iceCreamArray.get(randomNumber).getPrice() * 0.65);
+                updateLabels();
+                btnShowAll.doClick();
+                txtArea.append(String.format("Product-ID: " + iceCreamArray.get(randomNumber).getId() + " has had it's price reduced by 45%%!\n"
+                        + "It now costs: %.2f kr!", iceCreamArray.get(randomNumber).getPrice()));
+            } else {
+                if (itemsSearched.contains(iceCreamArray.get(randomNumber).getId()) == false) {
+                    itemsSearched.add(iceCreamArray.get(randomNumber).getId());
+                }
+                randomNumber = randomiser.nextInt(iceCreamArray.size());
+            }
+        }
+        if (itemsSearched.size() == iceCreamArray.size()) {
+            txtArea.setText("No items in stock to put on sale.");
+        }
+
+    }//GEN-LAST:event_btnSaleActionPerformed
+
+    private void updateLabels() {
         int popsicles = 0;
         int cones = 0;
         double totalPrice = 0;
-        
+
         for (IceCream iceCream : iceCreamArray) {
             if (iceCream.getType().equals("popsicle")) {
-                popsicles++;
+                popsicles += iceCream.getStock();
             } else {
-                cones++;
+                cones += iceCream.getStock();
             }
-            
-            totalPrice += iceCream.getPrice();
+
+            totalPrice += iceCream.getPrice() * iceCream.getStock();
         }
-        
+
         labelPopsicles.setText("Popsicles: " + popsicles);
         labelCones.setText("Cones: " + cones);
-        labelTotalPrice.setText("Total price: " + totalPrice);
+        labelTotalPrice.setText(String.format("Total price: %.2f kr", totalPrice));
         labelTotal.setText("Total stock: " + (popsicles + cones));
     }
-    
-    
+
     /**
      * @param args the command line arguments
      */
