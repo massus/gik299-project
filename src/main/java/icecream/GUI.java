@@ -12,6 +12,9 @@ import java.util.ArrayList;
  * @author acezack
  */
 public class GUI extends javax.swing.JFrame {
+
+    ArrayList<IceCream> iceCreamArray;
+
     /**
      * Creates new form GUI
      */
@@ -20,8 +23,8 @@ public class GUI extends javax.swing.JFrame {
         ddProductType.removeAllItems();
         ddProductType.addItem("popsicle");
         ddProductType.addItem("cone");
-        
-        ArrayList<IceCream> iceCreamArray = new ArrayList();
+
+        iceCreamArray = new ArrayList();
         iceCreamArray.add(new IceCream("0", "popsicle", "GB Glass", 19, 5, "cola", true, false));
         iceCreamArray.add(new IceCream("1", "popsicle", "GB Glass", 19, 7, "jordgubbe", true, false));
         iceCreamArray.add(new IceCream("2", "cone", "GB Glass", 25, 3, "choklad", true, true));
@@ -89,6 +92,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         btnAdd.setText("Add");
+        btnAdd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddActionPerformed(evt);
+            }
+        });
 
         btnScrollLeft.setText("<");
 
@@ -287,6 +295,43 @@ public class GUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_tfProductBrandActionPerformed
 
+    private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
+        // TODO add your handling code here:
+        boolean IDexists = false;
+        if (!(tfProductID.getText().equals("")
+                || tfProductBrand.getText().equals("")
+                || tfProductPrice.getText().equals("")
+                || tfProductStock.getText().equals("")
+                || tfProductFlavour.getText().equals(""))) {
+            for (IceCream iceCream : iceCreamArray) {
+                if (iceCream.getId().equals(tfProductID.getText())) {
+                    IDexists = true;
+                }
+            }
+            if (IDexists) {
+                txtArea.setText("Product-ID: " + tfProductID.getText() + " already exists.");
+            } else {
+                iceCreamArray.add(new IceCream(
+                        tfProductID.getText(),
+                        ddProductType.getSelectedItem().toString(),
+                        tfProductBrand.getText(),
+                        Double.parseDouble(tfProductPrice.getText()),
+                        Integer.parseInt(tfProductStock.getText()),
+                        tfProductFlavour.getText(),
+                        cbVegan.isSelected(),
+                        cbAllergens.isSelected()));
+                txtArea.setText("Product added!");
+            }
+        } else {
+            txtArea.setText("Missing information to be able to add in to the list.");
+        }
+    }//GEN-LAST:event_btnAddActionPerformed
+    private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionPerformed
+        if (iceCreamArray.size == 0) {
+            txtArea.setText("Lagret är tomt");
+        } else {
+            for (var i : iceCreamArray) {
+                txtArea.append(iceCreamArray.getPrintAble());
     private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionPerformed
         if (iceCreamArray.size == 0) {
             txtArea.setText("Lagret är tomt");
