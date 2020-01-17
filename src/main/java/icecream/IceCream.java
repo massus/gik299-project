@@ -94,7 +94,7 @@ public class IceCream {
         this.allergenBesidesDairy = allergenBesidesDairy;
     }
     
-    public String getPrintAble() {
+    public String getPrintable() {
         return String.format("Id: %s.\n"
                 + "Type: %s\n"
                 + "Brand: %s\n"
