@@ -29,6 +29,8 @@ public class GUI extends javax.swing.JFrame {
         iceCreamArray.add(new IceCream("0", "popsicle", "GB Glass", 19, 5, "cola", true, false));
         iceCreamArray.add(new IceCream("1", "popsicle", "GB Glass", 19, 7, "jordgubbe", true, false));
         iceCreamArray.add(new IceCream("2", "cone", "GB Glass", 25, 3, "choklad", true, true));
+        
+        updateLabels();
     }
 
     /**
@@ -72,6 +74,8 @@ public class GUI extends javax.swing.JFrame {
         ddProductType = new javax.swing.JComboBox<>();
         btnSale = new javax.swing.JButton();
         btnRemove = new javax.swing.JButton();
+        btnSearchPrice = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setName("MainFrame"); // NOI18N
@@ -181,6 +185,21 @@ public class GUI extends javax.swing.JFrame {
             }
         });
 
+        btnSearchPrice.setText("Search");
+        btnSearchPrice.setToolTipText("Searches for items with a price lower than entered in the price-field.");
+        btnSearchPrice.setPreferredSize(new java.awt.Dimension(75, 23));
+        btnSearchPrice.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchPriceActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setLabelFor(btnSearchPrice);
+        jLabel9.setText("*");
+        jLabel9.setToolTipText("Searches for items with a price lower than entered in the price-field.");
+        jLabel9.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        jLabel9.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -220,10 +239,17 @@ public class GUI extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(btnAdd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(btnRemove, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(11, 11, 11)
-                        .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnChange, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(9, 9, 9)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnChange, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSearchPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, 0)
+                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(76, 76, 76)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelOutput)
@@ -240,7 +266,7 @@ public class GUI extends javax.swing.JFrame {
                         .addGap(80, 80, 80)
                         .addComponent(btnScrollRight))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 343, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,30 +292,34 @@ public class GUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(tfProductBrand, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfProductStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tfProductFlavour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(cbVegan))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(cbAllergens))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(7, 7, 7)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(tfProductPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel4)
+                                    .addComponent(btnSearchPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(tfProductStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel5))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(tfProductFlavour, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel6))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7)
+                                    .addComponent(cbVegan))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel8)
+                                    .addComponent(cbAllergens))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnAdd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnRemove, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel9)))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -370,6 +400,7 @@ public class GUI extends javax.swing.JFrame {
         } else {
             txtArea.setText("Missing information to be able to add in to the list.");
         }
+        updateLabels();
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionPerformed
@@ -389,10 +420,12 @@ public class GUI extends javax.swing.JFrame {
                 txtArea.setText("Product-ID " + i.getId() + " has been removed.");
                 tfProductID.setText("");
                 iceCreamArray.remove(i);
+                break;
             } else {
                 txtArea.setText("The product with ID: " + tfProductID.getText() + " was not found.");
             }
         }
+        updateLabels();
     }//GEN-LAST:event_btnRemoveActionPerformed
     private void btnScrollLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScrollLeftActionPerformed
         // TODO add your handling code here:
@@ -418,19 +451,10 @@ public class GUI extends javax.swing.JFrame {
         txtArea.setText("");
         for (var i : iceCreamArray) {
             if (i.getType().equals(ddProductType.getSelectedItem().toString()) && i.getBrand().equals(tfProductBrand.getText())) {
-                String output = String.format("Id: %s.\n"
-                + "Type: %s\n"
-                + "Brand: %s\n"
-                + "Price: %.2f\n"
-                + "Stock: %d\n"
-                + "Flavour: %s\n"
-                + "Vegan: %b\n"
-                + "Allergens: %b\n"
-                + "----------------------------------------------------------\n", 
-                i.getId(), i.getType(), i.getBrand(), i.getPrice(), i.getStock(), i.getFlavour(), i.getVegan(), i.getAllergenBesidesDairy());
-                
-                txtArea.append(output);
+                txtArea.append(i.getPrintable());
                 searchHits++;
+            } else {
+                txtArea.setText("Could not find items with given parameters.");
             }
         }
         txtArea.append("Search hits: " + searchHits);
@@ -452,9 +476,47 @@ public class GUI extends javax.swing.JFrame {
         
         if (!found) {
             txtArea.setText("ID not found");
-        } 
+        }
+        updateLabels();
     }//GEN-LAST:event_btnChangeActionPerformed
 
+    private void btnSearchPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchPriceActionPerformed
+        // TODO add your handling code here:
+        boolean itemsFound = false;
+        txtArea.setText("");
+        for (IceCream iceCream : iceCreamArray) {
+            if (iceCream.getPrice() < Double.parseDouble(tfProductPrice.getText())) {
+                txtArea.append(iceCream.getPrintable());
+                itemsFound = true;
+            }
+        }
+        if (!itemsFound) {
+            txtArea.setText("No items found with a price lower than " + tfProductPrice.getText() + "kr.");
+        }
+    }//GEN-LAST:event_btnSearchPriceActionPerformed
+
+    private void updateLabels () {
+        int popsicles = 0;
+        int cones = 0;
+        double totalPrice = 0;
+        
+        for (IceCream iceCream : iceCreamArray) {
+            if (iceCream.getType().equals("popsicle")) {
+                popsicles++;
+            } else {
+                cones++;
+            }
+            
+            totalPrice += iceCream.getPrice();
+        }
+        
+        labelPopsicles.setText("Popsicles: " + popsicles);
+        labelCones.setText("Cones: " + cones);
+        labelTotalPrice.setText("Total price: " + totalPrice);
+        labelTotal.setText("Total stock: " + (popsicles + cones));
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
@@ -498,6 +560,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JButton btnScrollLeft;
     private javax.swing.JButton btnScrollRight;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnSearchPrice;
     private javax.swing.JButton btnShowAll;
     private javax.swing.JButton btnSort;
     private javax.swing.JCheckBox cbAllergens;
@@ -511,6 +574,7 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelCones;
     private javax.swing.JLabel labelOutput;
