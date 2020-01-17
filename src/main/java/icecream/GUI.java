@@ -479,7 +479,7 @@ public class GUI extends javax.swing.JFrame {
         // Hittades ingen glass skriver vi det.
         if (!iceCreamFound) {
             txtArea.setText("Could not find items with given parameters.");
-        // Hittades en glass skriver vi ut hur många som hittades.
+            // Hittades en glass skriver vi ut hur många som hittades.
         } else {
             txtArea.append("Search hits: " + searchHits);
         }
@@ -487,31 +487,40 @@ public class GUI extends javax.swing.JFrame {
 
     private void btnChangeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChangeActionPerformed
         boolean iceCreamFound = false;
-        
+
         // Letar igenom arrayen efter ett ID som passar och ändrar datan för det
         // ID:t med objektets setters.
         for (IceCream iceCream : iceCreamArray) {
             if (iceCream.getId().equals(tfIceCreamID.getText())) {
-                iceCream.setPrice(Double.parseDouble(tfIceCreamPrice.getText()));
-                iceCream.setStock(Integer.parseInt(tfIceCreamStock.getText()));
+                // Fångar upp om användaren skriver något annat än siffror i 
+                // vardera fält.
+                try {
+                    iceCream.setPrice(Double.parseDouble(tfIceCreamPrice.getText()));
+                    iceCream.setStock(Integer.parseInt(tfIceCreamStock.getText()));
 
-                txtArea.setText("");
-                txtArea.append("You changed product with ID: " + iceCream.getId() + "\n\n");
-                txtArea.append(iceCream.getPrintable());
-                iceCreamFound = true;
+                    txtArea.setText("");
+                    txtArea.append("You changed product with ID: " + iceCream.getId() + "\n\n");
+                    txtArea.append(iceCream.getPrintable());
+                    iceCreamFound = true;
+                    break;
+                } catch (NumberFormatException e) {
+                    txtArea.setText("Could not handle input. Check price "
+                            + "and stock-fields.");
+                }
             }
         }
 
         // Printar att produkt inte hittades
         if (!iceCreamFound) {
-            txtArea.setText("ID not found");
+            txtArea.setText("Product with ID: " + tfIceCreamID.getText()
+                    + " not found");
         }
         updateLabels();
     }//GEN-LAST:event_btnChangeActionPerformed
 
     private void btnSearchPriceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchPriceActionPerformed
         // TODO add your handling code here:
-        
+
         // Letar igenom alla objekts .getPrice() efter ett pris som är lägre 
         // än i pris-fältet i GUI:t och om det är lägre skriver vi ut det.
         boolean itemsFound = false;
@@ -529,7 +538,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSearchPriceActionPerformed
 
     private void btnSortActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSortActionPerformed
-        
+
         // Sorterar arrayen med hjälp av en komparator som jämför märkena 
         // alfabetiskt.
         if (iceCreamArray.isEmpty()) {
@@ -547,7 +556,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void btnSaleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaleActionPerformed
         // TODO add your handling code here:
-        
+
         // Variabler för att hantera sökningen
         Random randomiser = new Random();
         // Slumpad index
@@ -559,7 +568,6 @@ public class GUI extends javax.swing.JFrame {
         // Håller koll på ID:s på alla glassar vi redan försökt gjort en sale på.
         ArrayList<String> iceCreamsSearched = new ArrayList();
 
-        
         // Loopar så länge itemFound = false och antalet sökta glassar är lägre
         // än antalet glassar i vår huvudsakliga array.
         while (itemFound == false && iceCreamsSearched.size() < iceCreamArray.size()) {
@@ -567,7 +575,7 @@ public class GUI extends javax.swing.JFrame {
             if (iceCreamArray.get(randomNumber).getStock() > 0) {
                 // Säger att vi hittat en glass med lagerantal över 0.
                 itemFound = true;
-                
+
                 oldPrice = iceCreamArray.get(randomNumber).getPrice();
                 // Hämtar glassen ifråga och sätter en nytt pris vilket är
                 // dess gamla pris multiplicerat med 0,65.
@@ -598,7 +606,6 @@ public class GUI extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnSaleActionPerformed
 
-    
     // Metod för att updatera labels.
     private void updateLabels() {
         int popsicles = 0;
