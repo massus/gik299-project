@@ -93,20 +93,20 @@
                       <Component id="btnScrollLeft" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="labelPopsicles" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelCones" min="-2" pref="52" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="labelTotalPrice" min="-2" max="-2" attributes="0"/>
-                          <Component id="labelTotal" min="-2" max="-2" attributes="0"/>
+                          <Component id="labelCones" max="32767" attributes="0"/>
+                          <Component id="labelPopsicles" pref="100" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="labelTotal" pref="100" max="32767" attributes="0"/>
+                          <Component id="labelTotalPrice" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
                       <Component id="btnScrollRight" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" alignment="0" min="-2" pref="343" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="32" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
