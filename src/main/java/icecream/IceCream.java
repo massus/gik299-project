@@ -13,7 +13,7 @@ public class IceCream {
     
     String tabort;
 
-    public IceCream(String id, String type, String brand, int price, int stock, String flavour, Boolean vegan, Boolean allergenBesidesDairy) {
+    public IceCream(String id, String type, String brand, double price, int stock, String flavour, Boolean vegan, Boolean allergenBesidesDairy) {
         this.id = id;
         this.type = type;
         this.brand = brand;
