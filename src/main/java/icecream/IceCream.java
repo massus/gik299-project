@@ -2,6 +2,12 @@
 package icecream;
 
 public class IceCream {
-    String id;
-    String productType;
+    private String id;
+    private String productType;
+    private String brand;
+    private int price;
+    private int stock;
+    private String flavour;
+    private Boolean diet;
+    private Boolean allergen;
 }
