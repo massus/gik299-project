@@ -10,10 +10,8 @@ public class IceCream {
     private String flavour;
     private Boolean vegan;
     private Boolean allergenBesidesDairy;
-    
-    String tabort;
 
-    public IceCream(String id, String type, String brand, int price, int stock, String flavour, Boolean vegan, Boolean allergenBesidesDairy) {
+    public IceCream(String id, String type, String brand, double price, int stock, String flavour, Boolean vegan, Boolean allergenBesidesDairy) {
         this.id = id;
         this.type = type;
         this.brand = brand;
@@ -30,6 +28,14 @@ public class IceCream {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getProductType() {
@@ -86,5 +92,18 @@ public class IceCream {
 
     public void setAllergenBesidesDairy(Boolean allergenBesidesDairy) {
         this.allergenBesidesDairy = allergenBesidesDairy;
+    }
+    
+    public String getPrintAble() {
+        return String.format("Id: %s.\n"
+                + "Type: %s\n"
+                + "Brand: %s\n"
+                + "Price: %f\n"
+                + "Stock: %d\n"
+                + "Flavour: %s\n"
+                + "Vegan: %b\n"
+                + "Allergens: %b\n"
+                + "----------------------------------------------------------\n", 
+                getId(), getType(), getBrand(), getPrice(), getStock(), getFlavour(), getVegan(), getAllergenBesidesDairy());
     }
 }
