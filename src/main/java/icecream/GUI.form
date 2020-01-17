@@ -88,12 +88,8 @@
                           </Group>
                       </Group>
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
-                      <Component id="btnSearch" min="-2" pref="71" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="btnChange" min="-2" pref="83" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="labelOutput" min="-2" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
@@ -103,12 +99,12 @@
                           <Component id="labelPopsicles" min="-2" max="-2" attributes="0"/>
                           <Component id="labelCones" min="-2" pref="52" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="labelTotalPrice" min="-2" max="-2" attributes="0"/>
                           <Component id="labelTotal" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
                       <Component id="btnScrollRight" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" alignment="0" min="-2" pref="343" max="-2" attributes="0"/>
@@ -419,6 +415,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="SALE"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSaleActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnRemove">
       <Properties>
