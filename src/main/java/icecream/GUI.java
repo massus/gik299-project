@@ -21,6 +21,10 @@ public class GUI extends javax.swing.JFrame {
         ddProductType.addItem("popsicle");
         ddProductType.addItem("cone");
         
+        ArrayList<IceCream> iceCreamArray = new ArrayList();
+        iceCreamArray.add(new IceCream("0", "popsicle", "GB Glass", 19, 5, "cola", true, false));
+        iceCreamArray.add(new IceCream("1", "popsicle", "GB Glass", 19, 7, "jordgubbe", true, false));
+        iceCreamArray.add(new IceCream("2", "cone", "GB Glass", 25, 3, "choklad", true, true));
     }
 
     /**
