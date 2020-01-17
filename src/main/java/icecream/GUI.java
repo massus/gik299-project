@@ -289,10 +289,10 @@ public class GUI extends javax.swing.JFrame {
 
     private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionPerformed
         if (iceCreamArray.size == 0) {
-            txtArea.setText("Lagret är tomt") 
+            txtArea.setText("Lagret är tomt");
         } else {
             for (var i : iceCreamArray) {
-                txtArea.append(iceCreamArray.getPrintAble());
+                txtArea.append(i.getPrintAble());
             }
         }
     }//GEN-LAST:event_btnShowAllActionPerformed
