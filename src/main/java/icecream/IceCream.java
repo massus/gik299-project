@@ -3,11 +3,86 @@ package icecream;
 
 public class IceCream {
     private String id;
-    private String productType;
+    private String type;
     private String brand;
-    private int price;
+    private double price;
     private int stock;
     private String flavour;
-    private Boolean diet;
-    private Boolean allergen;
+    private Boolean vegan;
+    private Boolean allergenBesidesDairy;
+
+    public IceCream(String id, String type, String brand, int price, int stock, String flavour, Boolean vegan, Boolean allergenBesidesDairy) {
+        this.id = id;
+        this.type = type;
+        this.brand = brand;
+        this.price = price;
+        this.stock = stock;
+        this.flavour = flavour;
+        this.vegan = vegan;
+        this.allergenBesidesDairy = allergenBesidesDairy;
+    }
+    
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getProductType() {
+        return type;
+    }
+
+    public void setProductType(String productType) {
+        this.type = productType;
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public String getFlavour() {
+        return flavour;
+    }
+
+    public void setFlavour(String flavour) {
+        this.flavour = flavour;
+    }
+
+    public Boolean getVegan() {
+        return vegan;
+    }
+
+    public void setVegan(Boolean vegan) {
+        this.vegan = vegan;
+    }
+
+    public Boolean getAllergenBesidesDairy() {
+        return allergenBesidesDairy;
+    }
+
+    public void setAllergenBesidesDairy(Boolean allergenBesidesDairy) {
+        this.allergenBesidesDairy = allergenBesidesDairy;
+    }
 }
