@@ -98,7 +98,7 @@ public class IceCream {
         return String.format("Id: %s.\n"
                 + "Type: %s\n"
                 + "Brand: %s\n"
-                + "Price: %f\n"
+                + "Price: %.2f\n"
                 + "Stock: %d\n"
                 + "Flavour: %s\n"
                 + "Vegan: %b\n"
