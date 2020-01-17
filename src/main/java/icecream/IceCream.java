@@ -10,6 +10,8 @@ public class IceCream {
     private String flavour;
     private Boolean vegan;
     private Boolean allergenBesidesDairy;
+    
+    String tabort;
 
     public IceCream(String id, String type, String brand, int price, int stock, String flavour, Boolean vegan, Boolean allergenBesidesDairy) {
         this.id = id;
