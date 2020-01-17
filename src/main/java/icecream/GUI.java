@@ -13,6 +13,7 @@ import java.util.Random;
 /**
  *
  * @author acezack
+ * @author massus
  */
 public class GUI extends javax.swing.JFrame {
 
@@ -24,15 +25,18 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+        // Rensar och lägger till korrekta typer i vår dropdown för glasstyper.
         ddIceCreamType.removeAllItems();
         ddIceCreamType.addItem("popsicle");
         ddIceCreamType.addItem("cone");
 
+        // Lägger till tre glassar i arrayen.
         iceCreamArray = new ArrayList();
         iceCreamArray.add(new IceCream("0", "popsicle", "GB Glass", 19, 5, "cola", true, false));
         iceCreamArray.add(new IceCream("1", "popsicle", "GB Glass", 19, 7, "jordgubbe", true, false));
         iceCreamArray.add(new IceCream("2", "cone", "GB Glass", 25, 3, "choklad", true, true));
 
+        btnShowAll.doClick();
         updateLabels();
     }
 
@@ -371,20 +375,27 @@ public class GUI extends javax.swing.JFrame {
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
         boolean iceCreamIDExists = false;
+        
+        // Kollar så att inget fält är tomt
         if (!(tfIceCreamID.getText().equals("")
                 || tfIceCreamBrand.getText().equals("")
                 || tfIceCreamPrice.getText().equals("")
                 || tfIceCreamStock.getText().equals("")
                 || tfIceCreamFlavour.getText().equals(""))) {
 
+            // Kollar så att ID:t inte är upptaget.
             for (IceCream iceCream : iceCreamArray) {
                 if (iceCream.getId().equals(tfIceCreamID.getText())) {
                     iceCreamIDExists = true;
                 }
             }
+            // Om ID:t är upptaget, skriv att det finns.
             if (iceCreamIDExists) {
                 txtArea.setText("Product-ID: " + tfIceCreamID.getText() + " already exists.");
             } else {
+                // Try-catch för att kunna hantera om användaren skriver in 
+                // icke-siffror i fälten för pris och lager som är double
+                // respektive int.
                 try {
                     iceCreamArray.add(new IceCream(
                             tfIceCreamID.getText(),
@@ -409,19 +420,23 @@ public class GUI extends javax.swing.JFrame {
                 }
 
             }
+        // Är ett fält skriver vi en varning.
         } else {
             txtArea.setText("Missing information to be able to add in to the list.");
         }
+        // Uppdaterar våra labels.
         updateLabels();
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnShowAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowAllActionPerformed
+        // Kollar så att arrayen inte är tom.
         if (iceCreamArray.isEmpty()) {
             txtArea.setText("Nothing in stock.");
         } else {
+            // Tömmer textfältet och loopar igenom alla glassar och skriver ut.
             txtArea.setText("");
-            for (var i : iceCreamArray) {
-                txtArea.append(i.getPrintable());
+            for (IceCream iceCream : iceCreamArray) {
+                txtArea.append(iceCream.getPrintable());
             }
         }
     }//GEN-LAST:event_btnShowAllActionPerformed
@@ -429,22 +444,26 @@ public class GUI extends javax.swing.JFrame {
     private void btnRemoveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoveActionPerformed
         boolean iceCreamRemoved = false;
 
-        for (var i : iceCreamArray) {
-            if (i.getId().equals(tfIceCreamID.getText())) {
-                txtArea.setText("Product-ID " + i.getId() + " has been removed.");
+        // Söker igenom hela arrayen med ID:t från ID-fältet.
+        for (IceCream iceCream : iceCreamArray) {
+            // Får vi en matchning tar vi bort glassen.
+            if (iceCream.getId().equals(tfIceCreamID.getText())) {
+                txtArea.setText("Product-ID " + iceCream.getId() + " has been removed.");
                 tfIceCreamID.setText("");
-                iceCreamArray.remove(i);
+                iceCreamArray.remove(iceCream);
                 iceCreamRemoved = true;
                 break;
             }
         }
+        // Hittade vi ingen glass med ID:t skriver vi det.
         if (!iceCreamRemoved) {
             txtArea.setText("The product with ID: " + tfIceCreamID.getText() + " was not found.");
         }
         updateLabels();
     }//GEN-LAST:event_btnRemoveActionPerformed
     private void btnScrollLeftActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScrollLeftActionPerformed
-        // TODO add your handling code here:
+        // Håller koll på position och ser till att den inte hamnar utanför
+        // arrayens gränser.
         scrollIndex--;
         if (scrollIndex == - 1) {
             scrollIndex = iceCreamArray.size() - 1;
@@ -453,7 +472,7 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnScrollLeftActionPerformed
 
     private void btnScrollRightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnScrollRightActionPerformed
-        // TODO add your handling code here:
+        // Tvärtom.
         scrollIndex++;
         if (scrollIndex == iceCreamArray.size()) {
             scrollIndex = 0;
@@ -467,7 +486,7 @@ public class GUI extends javax.swing.JFrame {
 
         txtArea.setText("");
         // Letar igenom arrayen efter en glass där både glasstyp och glassmärke 
-        // samma som är skriva i fälten i GUI:t och säger att glass hittades,
+        // samma som är skrivna i fälten i GUI:t och säger att glass hittades,
         // skriver ut alla träffar och räknar antalet träffar.
         for (IceCream iceCream : iceCreamArray) {
             if (iceCream.getType().equals(ddIceCreamType.getSelectedItem().toString()) && iceCream.getBrand().equals(tfIceCreamBrand.getText())) {
@@ -592,14 +611,14 @@ public class GUI extends javax.swing.JFrame {
                 // kollar vi om vår sökning redan finns lagrad.
                 // Finns den inte lägger vi till sökningen i vår lista över 
                 // sökningar.
-                if (iceCreamsSearched.contains(iceCreamArray.get(randomNumber).getId()) == false) {
+                if (!iceCreamsSearched.contains(iceCreamArray.get(randomNumber).getId())) {
                     iceCreamsSearched.add(iceCreamArray.get(randomNumber).getId());
                 }
                 // Slumpar fram ett nytt tal.
                 randomNumber = randomiser.nextInt(iceCreamArray.size());
             }
         }
-        // Om vi slumpade fram allting med inget fanns i lager skriver vi det.
+        // Om vi slumpade fram allting men inget fanns i lager skriver vi det.
         if (iceCreamsSearched.size() == iceCreamArray.size()) {
             txtArea.setText("No items in stock to put on sale.");
         }
